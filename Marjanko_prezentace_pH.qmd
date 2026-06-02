@@ -1,0 +1,51 @@
+---
+title: "Shiny aplikace pro výpočet pH slabé kyseliny nebo zásady"
+author: "Matouš Bohumil Marjanko"
+format: revealjs
+editor: visual
+---
+
+## Klíčové chemické pojmy
+
+### pH a pOH
+
+Záporný logaritmus aktivity oxoniových ($H_3O^+$) nebo hydroxidových ($OH^-$) iontů v roztoku.
+
+### Slabé protolyty
+
+Kyseliny a zásady, které ve vodě disociují pouze částečně, čímž ustavují rovnováhu.
+
+### Konstanta K
+
+Disociační konstanta vyjadřující sílu kyseliny ($K_a$) či zásady ($K_b$). Čím vyšší, tím silnější protolyt.
+
+## Uživatelské rozhraní (UI)
+
+- **Výběr typu:** `radioButtons` pro volbu mezi kyselinou a zásadou.
+- **Koncentrace:** `numericInput` pro zadání počáteční koncentrace $c_0$.
+- **Konstanta:** Dynamické vstupní pole pro $K_a$ nebo $K_b$ (případně pK).
+- **Výpočet:** `actionButton` pro spuštění reaktivního procesu.
+
+## Rovnice
+
+|   | Rovnice pro výpočet koncentrace | Výsledné pH |
+|:--------------------|:------------------------:|:------------------------:|
+| **Slabá kyselina** | $$[H^+] \approx \sqrt{K_a \cdot c_0}$$ | $\text{pH} = -\log_{10}([H^+])$ |
+| **Slabá zásada** | $$[OH^-] \approx \sqrt{K_b \cdot c_0}$$ | $\text{pH} = 14 - \text{pOH}$ |
+
+## Výstup
+
+- **Textová interpretace:** Co to je, jaké je pH.
+- **Tabulka:** Přehled parametrů výpočtu (vstupy, mezivýpočty).
+- **Graf:** Průběh pH v závislosti na koncentraci s vyznačeným bodem měření
+
+## Server
+- Obsahuje logiku výpočtu a reaktivní prvky (`eventReactive`, `observeEvent`). Generuje grafy a tabulky na základě zachycených vstupů.
+- Vzhledem k malé velikosti je aplikace realizována v jediném souboru
+
+
+
+# Dotazy?
+
+*Děkuji za pozornost.*
+
